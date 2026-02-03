@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Check, X } from 'lucide-react';
+
 
 const Availability: React.FC = () => {
     const blocks = [
