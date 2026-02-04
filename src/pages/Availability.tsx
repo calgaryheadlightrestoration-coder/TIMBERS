@@ -1,7 +1,16 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import BookingModal from '../components/BookingModal';
 
 const Availability: React.FC = () => {
+    const [selectedDates, setSelectedDates] = useState<string | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openBookingModal = (dates: string) => {
+        setSelectedDates(dates);
+        setIsModalOpen(true);
+    };
+
     const blocks = [
         { dates: 'Dec 1 - Dec 6', nights: '4 night min', price: 1549, status: 'available' },
         { dates: 'Dec 6 - Dec 13', nights: '4 night min', price: 1649, status: 'available' },
@@ -56,7 +65,10 @@ const Availability: React.FC = () => {
                                             Booked
                                         </span>
                                     ) : (
-                                        <button className="inline-flex items-center gap-2 bg-[#c6a87c]/10 text-[#c6a87c] text-[10px] uppercase tracking-widest font-bold border border-[#c6a87c]/50 px-4 py-1.5 hover:bg-[#c6a87c] hover:text-white transition-all rounded-sm">
+                                        <button
+                                            onClick={() => openBookingModal(block.dates)}
+                                            className="inline-flex items-center gap-2 bg-[#c6a87c]/10 text-[#c6a87c] text-[10px] uppercase tracking-widest font-bold border border-[#c6a87c]/50 px-4 py-1.5 hover:bg-[#c6a87c] hover:text-white transition-all rounded-sm"
+                                        >
                                             Request
                                         </button>
                                     )}
@@ -73,6 +85,13 @@ const Availability: React.FC = () => {
                     </a>
                 </div>
             </div>
+
+            <BookingModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                bookingDates={selectedDates || ''}
+                formId="YOUR_FORMCARRY_ID"
+            />
         </div>
     );
 };
