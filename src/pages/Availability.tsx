@@ -1,7 +1,6 @@
 
 import React from 'react';
 
-
 const Availability: React.FC = () => {
     const blocks = [
         { dates: 'Dec 1 - Dec 6', nights: '4 night min', price: 1549, status: 'available' },
@@ -26,38 +25,38 @@ const Availability: React.FC = () => {
     ];
 
     return (
-        <div className="pt-24 min-h-screen pb-20">
+        <div className="pt-24 min-h-screen pb-20 bg-white">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-16">
                     <span className="text-[#c6a87c] uppercase tracking-[0.2em] text-sm font-bold block mb-4">Secure Your Stay</span>
-                    <h1 className="text-4xl md:text-6xl font-heading text-white mb-6">Winter Availability</h1>
-                    <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                    <h1 className="text-4xl md:text-6xl font-heading text-[#1a1a1a] mb-6">Winter Availability</h1>
+                    <p className="text-gray-500 max-w-2xl mx-auto leading-relaxed">
                         The Timbers offers exclusive weekly blocks during peak season. Lock in your dates for the ultimate Fernie experience.
                         Direct booking saves 15% vs third-party platforms.
                     </p>
                 </div>
 
-                <div className="max-w-4xl mx-auto bg-[#141414] border border-white/5 rounded-sm overflow-hidden">
-                    <div className="grid grid-cols-4 bg-[#1a1a1a] p-4 md:p-6 border-b border-white/5 text-[10px] md:text-xs uppercase tracking-widest font-bold text-gray-500">
+                <div className="max-w-4xl mx-auto bg-white border border-gray-100 rounded-sm overflow-hidden shadow-lg">
+                    <div className="grid grid-cols-4 bg-gray-50 p-4 md:p-6 border-b border-gray-100 text-[10px] md:text-xs uppercase tracking-widest font-bold text-gray-500">
                         <div className="col-span-2 md:col-span-1">Dates</div>
                         <div className="hidden md:block">Duration</div>
                         <div>Nightly Rate</div>
                         <div className="text-right">Status</div>
                     </div>
 
-                    <div className="divide-y divide-white/5">
+                    <div className="divide-y divide-gray-100">
                         {blocks.map((block, i) => (
-                            <div key={i} className={`grid grid-cols-4 p-4 md:p-6 items-center transition-colors hover:bg-white/[0.02] ${block.status === 'booked' ? 'opacity-50 grayscale' : ''}`}>
-                                <div className="col-span-2 md:col-span-1 font-heading text-white md:text-lg">{block.dates}</div>
+                            <div key={i} className={`grid grid-cols-4 p-4 md:p-6 items-center transition-colors hover:bg-gray-50 ${block.status === 'booked' ? 'opacity-50 grayscale' : ''}`}>
+                                <div className="col-span-2 md:col-span-1 font-heading text-[#1a1a1a] md:text-lg">{block.dates}</div>
                                 <div className="hidden md:block text-gray-400 text-sm">{block.nights}</div>
                                 <div className="text-[#c6a87c] font-bold">${block.price}</div>
                                 <div className="flex justify-end">
                                     {block.status === 'booked' ? (
-                                        <span className="inline-flex items-center gap-2 text-red-500/80 text-[10px] uppercase tracking-widest font-bold border border-red-500/20 px-3 py-1 rounded-full">
+                                        <span className="inline-flex items-center gap-2 text-red-500/80 text-[10px] uppercase tracking-widest font-bold border border-red-500/20 px-3 py-1 rounded-full bg-red-50">
                                             Booked
                                         </span>
                                     ) : (
-                                        <button className="inline-flex items-center gap-2 bg-[#c6a87c]/10 text-[#c6a87c] text-[10px] uppercase tracking-widest font-bold border border-[#c6a87c]/50 px-4 py-1.5 hover:bg-[#c6a87c] hover:text-black transition-all rounded-sm">
+                                        <button className="inline-flex items-center gap-2 bg-[#c6a87c]/10 text-[#c6a87c] text-[10px] uppercase tracking-widest font-bold border border-[#c6a87c]/50 px-4 py-1.5 hover:bg-[#c6a87c] hover:text-white transition-all rounded-sm">
                                             Request
                                         </button>
                                     )}
@@ -69,7 +68,7 @@ const Availability: React.FC = () => {
 
                 <div className="mt-12 text-center">
                     <p className="text-gray-500 text-sm mb-4">All bookings subject to 16% tax.</p>
-                    <a href="mailto:dave@skithetimbers.com" className="inline-block bg-[#c6a87c] text-black px-8 py-4 font-bold uppercase tracking-widest hover:bg-white transition-colors">
+                    <a href="mailto:dave@skithetimbers.com" className="inline-block bg-[#c6a87c] text-white px-8 py-4 font-bold uppercase tracking-widest hover:bg-[#1a1a1a] transition-colors shadow-md">
                         Contact to Book
                     </a>
                 </div>

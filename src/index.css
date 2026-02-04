@@ -4,33 +4,36 @@
 
 @layer base {
     :root {
-        --background: 0 0% 6%;
-        --foreground: 0 0% 98%;
+        /* Light Theme Base */
+        --background: 0 0% 100%;
+        /* White */
+        --foreground: 0 0% 10%;
+        /* Dark Gray/Black for text */
 
-        --card: 0 0% 6%;
-        --card-foreground: 0 0% 98%;
+        --card: 0 0% 100%;
+        --card-foreground: 0 0% 10%;
 
-        --popover: 0 0% 6%;
-        --popover-foreground: 0 0% 98%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 0 0% 10%;
 
         --primary: 43 43% 63%;
         /* Gold #c6a87c */
-        --primary-foreground: 0 0% 9%;
+        --primary-foreground: 0 0% 100%;
 
-        --secondary: 0 0% 10%;
-        --secondary-foreground: 0 0% 98%;
+        --secondary: 0 0% 96%;
+        --secondary-foreground: 0 0% 10%;
 
-        --muted: 0 0% 10%;
-        --muted-foreground: 0 0% 63.9%;
+        --muted: 0 0% 96%;
+        --muted-foreground: 0 0% 45%;
 
-        --accent: 0 0% 10%;
-        --accent-foreground: 0 0% 98%;
+        --accent: 0 0% 96%;
+        --accent-foreground: 0 0% 10%;
 
-        --destructive: 0 62.8% 30.6%;
+        --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
 
-        --border: 0 0% 14.9%;
-        --input: 0 0% 14.9%;
+        --border: 0 0% 90%;
+        --input: 0 0% 90%;
         --ring: 43 43% 63%;
 
         --radius: 0.5rem;
@@ -65,11 +68,11 @@
 }
 
 ::-webkit-scrollbar-track {
-    @apply bg-[#0f0f0f];
+    @apply bg-white;
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-[#1a1a1a] rounded-full;
+    @apply bg-gray-300 rounded-full;
 }
 
 ::-webkit-scrollbar-thumb:hover {
