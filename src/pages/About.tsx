@@ -16,10 +16,10 @@ const About: React.FC = () => {
             image: "https://images.unsplash.com/photo-1556910103-1c02745a30bf?q=80&w=2070&auto=format&fit=crop"
         },
         {
-            title: "Hot Tub",
-            subtitle: "Time Travel in a Mythical",
-            description: "The Timbers hot tub deck has a mythical history and a magical setting. It’s the inspiration for the set of Hot Tub Time Machine. You exit a log building from glass doors to a hot tub encircled by evergreens. Wow, it’s art imitating life at The Timbers!",
-            image: "https://images.unsplash.com/photo-1572186192239-e932ec39c31e?q=80&w=2070&auto=format&fit=crop"
+            title: "Mountain Views",
+            subtitle: "360 Degree Panorama",
+            description: "Surrounded by the towering peaks of the Lizard Range, The Timbers offers unparalleled views of Fernie's pristine wilderness. Whether you're watching the morning sun hit the peaks or the stars emerge over the valley, the mountain is always the centerpiece of your stay.",
+            image: "https://images.unsplash.com/photo-1544198365-f5d60b6d8190?q=80&w=2070&auto=format&fit=crop"
         },
         {
             title: "Mountain Gear",

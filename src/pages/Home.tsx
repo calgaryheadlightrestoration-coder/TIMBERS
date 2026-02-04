@@ -6,64 +6,72 @@ import { Link } from 'react-router-dom';
 const Home: React.FC = () => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const heroImages = [
-        'https://images.unsplash.com/photo-1542668595-fa9394e5b686?q=80&w=2070&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=2070&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop',
-        'https://images.unsplash.com/photo-1518096338423-f8438b4d8961?q=80&w=2070&auto=format&fit=crop'
+        'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop', // Mountain Peak
+        'https://images.unsplash.com/photo-1544198365-f5d60b6d8190?q=80&w=2070&auto=format&fit=crop', // Snowy Mountains
+        'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2070&auto=format&fit=crop', // Starry Mountain
+        'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=2070&auto=format&fit=crop'  // Lake Mountain
     ];
 
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
-        }, 5000);
+        }, 6000);
         return () => clearInterval(interval);
-    }, []);
+    }, [heroImages.length]);
 
     return (
-        <div className="bg-[#0f0f0f]">
+        <div className="bg-[#0f0f0f] selection:bg-[#c6a87c] selection:text-black">
             {/* Hero Section */}
             <section className="relative h-screen flex items-center justify-center overflow-hidden">
                 {heroImages.map((img, idx) => (
                     <div
                         key={idx}
-                        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+                        className={`absolute inset-0 transition-all duration-[2000ms] ease-out ${idx === currentImageIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-110'}`}
                     >
                         <div
                             className="absolute inset-0 bg-cover bg-center"
                             style={{ backgroundImage: `url(${img})` }}
                         >
-                            <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]"></div>
+                            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-black/60"></div>
                         </div>
                     </div>
                 ))}
 
-                <div className="relative z-10 text-center px-6 max-w-6xl mx-auto mt-20">
-                    <span className="block text-[#c6a87c] text-xs md:text-sm font-bold uppercase tracking-[0.4em] mb-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-                        Fernie, British Columbia
-                    </span>
-                    <h1 className="text-5xl md:text-8xl lg:text-[10rem] font-heading text-white mb-8 tracking-tighter shadow-2xl animate-in fade-in zoom-in-95 duration-1000 delay-100 leading-[0.9]">
-                        Fernie BC's<br />
-                        <span className="text-[#c6a87c]">Ultimate</span><br />
+                <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+                    <div className="mb-6 overflow-hidden">
+                        <span className="inline-block text-[#c6a87c] text-xs md:text-sm font-bold uppercase tracking-[0.5em] animate-in slide-in-from-bottom-full duration-1000">
+                            Available for Winter 2025/26
+                        </span>
+                    </div>
+
+                    <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading text-white mb-8 tracking-tight animate-in fade-in zoom-in-95 duration-1000 delay-200">
+                        Fernie's <span className="font-light italic text-white/90">Ultimate</span><br />
                         Mountain Lodge
                     </h1>
-                    <p className="text-gray-200 text-lg md:text-2xl max-w-3xl mx-auto mb-12 font-light leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200 uppercase tracking-widest">
-                        Pure Canadian Log Luxury at the foot of legendary slopes.
+
+                    <div className="w-12 h-[2px] bg-[#c6a87c] mx-auto mb-8 animate-in fade-in duration-1000 delay-300"></div>
+
+                    <p className="text-white/80 text-base md:text-xl max-w-2xl mx-auto mb-12 font-light leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-500">
+                        Experience pure Canadian log luxury at the foot of legendary slopes.
+                        Your gateway to the gem of the Powder Highway.
                     </p>
-                    <div className="flex flex-col md:flex-row gap-6 justify-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-                        <Link to="/availability" className="bg-[#c6a87c] hover:bg-white hover:text-black text-black px-12 py-5 font-bold uppercase tracking-[0.2em] transition-all hover:scale-105 shadow-xl">
-                            Check Availability
+
+                    <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-700">
+                        <Link to="/availability" className="group relative bg-[#c6a87c] text-black px-10 py-4 font-bold uppercase tracking-widest text-sm transition-all overflow-hidden hover:shadow-[0_0_30px_rgba(198,168,124,0.4)]">
+                            <span className="relative z-10">Check Availability</span>
+                            <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
                         </Link>
-                        <Link to="/about" className="bg-transparent border border-white/40 hover:bg-white/10 text-white px-12 py-5 font-bold uppercase tracking-[0.2em] transition-all backdrop-blur-md">
-                            Explore Lodge
+                        <Link to="/about" className="text-white border-b border-white/30 pb-1 font-bold uppercase tracking-widest text-sm hover:text-[#c6a87c] hover:border-[#c6a87c] transition-all">
+                            Explore The Lodge
                         </Link>
                     </div>
                 </div>
             </section>
 
             {/* Intro Grid */}
-            <section className="py-24 bg-[#141414]">
+            <section className="py-32 bg-[#0f0f0f]">
                 <div className="container mx-auto px-6">
-                    <div className="grid lg:grid-cols-2 gap-16 items-center">
+                    <div className="grid lg:grid-cols-2 gap-20 items-center">
                         <div className="space-y-8">
                             <h2 className="text-4xl md:text-5xl font-heading text-white leading-tight">
                                 The Ultimate<br />
