@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
             <div className="container mx-auto px-6">
                 <div className="flex justify-between items-center">
                     <Link to="/" className="transition-transform hover:scale-105">
-                        <img src="/logo.png" alt="The Timbers" className="h-12 md:h-16 w-auto" />
+                        <img src="/logo.png" alt="The Timbers" className="h-20 md:h-32 w-auto" />
                     </Link>
 
                     {/* Desktop Nav */}

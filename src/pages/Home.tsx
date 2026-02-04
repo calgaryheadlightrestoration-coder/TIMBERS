@@ -1,41 +1,62 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, Mountain, Snowflake, Sun } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+    const heroImages = [
+        'https://images.unsplash.com/photo-1542668595-fa9394e5b686?q=80&w=2070&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?q=80&w=2070&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop',
+        'https://images.unsplash.com/photo-1518096338423-f8438b4d8961?q=80&w=2070&auto=format&fit=crop'
+    ];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <div className="bg-[#0f0f0f]">
             {/* Hero Section */}
             <section className="relative h-screen flex items-center justify-center overflow-hidden">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1542668595-fa9394e5b686?q=80&w=2070&auto=format&fit=crop')] bg-cover bg-center">
-                    <div className="absolute inset-0 bg-black/60 backdrop-blur-[2px]"></div>
-                </div>
+                {heroImages.map((img, idx) => (
+                    <div
+                        key={idx}
+                        className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${idx === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+                    >
+                        <div
+                            className="absolute inset-0 bg-cover bg-center"
+                            style={{ backgroundImage: `url(${img})` }}
+                        >
+                            <div className="absolute inset-0 bg-black/50 backdrop-blur-[1px]"></div>
+                        </div>
+                    </div>
+                ))}
 
-                <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-16">
-                    <span className="block text-[#c6a87c] text-xs md:text-sm font-bold uppercase tracking-[0.3em] mb-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
-                        Fernie Alpine Resort
+                <div className="relative z-10 text-center px-6 max-w-6xl mx-auto mt-20">
+                    <span className="block text-[#c6a87c] text-xs md:text-sm font-bold uppercase tracking-[0.4em] mb-6 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+                        Fernie, British Columbia
                     </span>
-                    <h1 className="text-5xl md:text-7xl lg:text-9xl font-heading text-white mb-8 tracking-tighter shadow-xl animate-in fade-in zoom-in-95 duration-1000 delay-100">
-                        The Timbers
+                    <h1 className="text-5xl md:text-8xl lg:text-[10rem] font-heading text-white mb-8 tracking-tighter shadow-2xl animate-in fade-in zoom-in-95 duration-1000 delay-100 leading-[0.9]">
+                        Fernie BC's<br />
+                        <span className="text-[#c6a87c]">Ultimate</span><br />
+                        Mountain Lodge
                     </h1>
-                    <p className="text-gray-300 text-lg md:text-2xl max-w-2xl mx-auto mb-12 font-light leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200">
+                    <p className="text-gray-200 text-lg md:text-2xl max-w-3xl mx-auto mb-12 font-light leading-relaxed animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-200 uppercase tracking-widest">
                         Pure Canadian Log Luxury at the foot of legendary slopes.
                     </p>
-                    <div className="flex flex-col md:flex-row gap-4 justify-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
-                        <Link to="/availability" className="bg-[#c6a87c] hover:bg-[#d4b88f] text-[#0f0f0f] px-8 py-4 font-bold uppercase tracking-[0.15em] transition-all hover:scale-105">
+                    <div className="flex flex-col md:flex-row gap-6 justify-center animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
+                        <Link to="/availability" className="bg-[#c6a87c] hover:bg-white hover:text-black text-black px-12 py-5 font-bold uppercase tracking-[0.2em] transition-all hover:scale-105 shadow-xl">
                             Check Availability
                         </Link>
-                        <Link to="/about" className="bg-transparent border border-white/20 hover:bg-white/5 text-white px-8 py-4 font-bold uppercase tracking-[0.15em] transition-all backdrop-blur-sm">
+                        <Link to="/about" className="bg-transparent border border-white/40 hover:bg-white/10 text-white px-12 py-5 font-bold uppercase tracking-[0.2em] transition-all backdrop-blur-md">
                             Explore Lodge
                         </Link>
                     </div>
-                </div>
-
-                {/* Scroll Indicator */}
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 animate-bounce">
-                    <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-white/50 to-transparent mx-auto mb-2"></div>
-                    <span className="text-[10px] uppercase tracking-widest">Scroll</span>
                 </div>
             </section>
 
