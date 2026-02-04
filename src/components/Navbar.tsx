@@ -24,12 +24,15 @@ const Navbar: React.FC = () => {
         { title: 'Summer', path: '/summer' },
     ];
 
+    const isHomePage = location.pathname === '/';
+    const isDarkBackground = isHomePage && !scrolled;
+
     return (
-        <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 shadow-md py-4' : 'bg-transparent py-6'}`}>
+        <nav className={`fixed w-full z-50 transition-all duration-300 ${!isDarkBackground ? 'bg-white/95 shadow-md py-4' : 'bg-transparent py-6'}`}>
             <div className="container mx-auto px-6">
                 <div className="flex justify-between items-center">
-                    <Link to="/" className={`text-2xl font-heading font-bold tracking-[0.2em] transition-colors ${scrolled ? 'text-[#1a1a1a]' : 'text-[#1a1a1a] md:text-white'}`}>
-                        THE TIMBERS
+                    <Link to="/" className="transition-transform hover:scale-105">
+                        <img src="/logo.png" alt="The Timbers" className="h-12 md:h-16 w-auto" />
                     </Link>
 
                     {/* Desktop Nav */}
@@ -39,8 +42,8 @@ const Navbar: React.FC = () => {
                                 key={link.title}
                                 to={link.path}
                                 className={`text-sm font-bold uppercase tracking-widest hover:text-[#c6a87c] transition-colors ${location.pathname === link.path
-                                        ? 'text-[#c6a87c]'
-                                        : scrolled ? 'text-[#1a1a1a]' : 'text-white'
+                                    ? 'text-[#c6a87c]'
+                                    : isDarkBackground ? 'text-white' : 'text-[#1a1a1a]'
                                     }`}
                             >
                                 {link.title}
@@ -50,9 +53,9 @@ const Navbar: React.FC = () => {
                             href="https://skithetimbers.com/availability/"
                             target="_blank"
                             rel="noreferrer"
-                            className={`px-6 py-2 rounded-sm font-bold uppercase tracking-widest text-xs transition-colors border ${scrolled
-                                    ? 'bg-[#c6a87c] text-white border-[#c6a87c] hover:bg-transparent hover:text-[#c6a87c]'
-                                    : 'bg-white text-[#1a1a1a] border-white hover:bg-transparent hover:text-white'
+                            className={`px-6 py-2 rounded-sm font-bold uppercase tracking-widest text-xs transition-colors border ${!isDarkBackground
+                                ? 'bg-[#c6a87c] text-white border-[#c6a87c] hover:bg-transparent hover:text-[#c6a87c]'
+                                : 'bg-white text-[#1a1a1a] border-white hover:bg-transparent hover:text-white'
                                 }`}
                         >
                             Book Now
@@ -61,7 +64,7 @@ const Navbar: React.FC = () => {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className={`md:hidden ${scrolled ? 'text-[#1a1a1a]' : 'text-[#1a1a1a]'}`}
+                        className={`md:hidden ${!isDarkBackground ? 'text-[#1a1a1a]' : 'text-white'}`}
                         onClick={() => setIsOpen(!isOpen)}
                     >
                         {isOpen ? <X size={24} /> : <Menu size={24} />}
